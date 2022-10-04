@@ -57,14 +57,24 @@ class MainController extends Controller
 
     public function actionEdit($id)
     {
-        $task = $this->taskRepository->getOneById($id);
-        $form = new TaskEditForm($task);
+        try {
+            $task = $this->taskRepository->getOneById($id);
+            $form = new TaskEditForm($task);
+        } catch (DomainException $e) {
+            return $this->render('concurrent-alert', [
+                'model' => null,
+                'message' => Yii::t('app', 'Task not found')
+            ]);
+        }
 
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $this->taskAddService->edit($form);
             } catch (DomainException $e) {
-                return $this->render('concurrent-alert', ['model' => $form]);
+                return $this->render('concurrent-alert', [
+                    'model' => $form,
+                    'message' => Yii::t('app', 'Conflict, item was changed by another user, your changes will be lost')
+                ]);
             }
             Yii::$app->session->setFlash('success', Yii::t('app', 'Task saved successfully'));
             return $this->redirect('index');
