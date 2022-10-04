@@ -1,4 +1,4 @@
-PUT http://localhost/api/tasks/4/done HTTP/1.1
+PUT http://localhost/api/tasks/1/done HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost/api/tasks/4/done HTTP/1.1
+PUT http://localhost/api/tasks/1/done HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
@@ -16,10 +16,5 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost/?r=api/tasks/4/done HTTP/1.1
+GET http://localhost/api/tasks/1 HTTP/1.1
 Accept: application/json
-Content-Type: application/json
-
-{
-  "done": false
-}

@@ -27,7 +27,7 @@ class TaskEditForm extends Model
     public function rules(): array
     {
         return [
-            [['id', 'title', 'priority', 'done'], 'required', 'message' => 'Заполните поле'],
+            [['id', 'title', 'priority', 'done'], 'required', 'message' => 'Fill in the field'],
             [['id'], 'integer'],
             [['title'], 'string'],
             [['priority'], 'integer'],

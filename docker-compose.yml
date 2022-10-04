@@ -17,10 +17,10 @@ services:
         volumes:
             - ./storage/docker/mysql:/var/lib/mysql
         environment:
-            - "MYSQL_ROOT_PASSWORD=1233123"
+            - "MYSQL_ROOT_PASSWORD=123123"
             - "MYSQL_DATABASE=test-task"
             - "MYSQL_USER=test-user"
-            - "MYSQL_PASSWORD=1233123"
+            - "MYSQL_PASSWORD=123123"
         ports:
             - "33061:3306"
         tty: true

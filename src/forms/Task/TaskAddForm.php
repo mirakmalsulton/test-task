@@ -13,7 +13,7 @@ class TaskAddForm extends Model
     public function rules(): array
     {
         return [
-            [['title', 'priority', 'done'], 'required', 'message' => 'Заполните поле'],
+            [['title', 'priority', 'done'], 'required', 'message' => 'Fill in the field'],
             [['title'], 'string'],
             [['priority'], 'integer'],
             [['done'], 'boolean'],

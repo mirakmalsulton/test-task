@@ -1,14 +1,12 @@
 <?php
 
-namespace tests\unit\models;
+namespace app\tests\unit\Entities;
 
 use app\src\entities\Task;
-use Codeception\Specify;
+use Codeception\Test\Unit;
 
-class TaskTest extends \Codeception\Test\Unit
+class TaskTest extends Unit
 {
-    use Specify;
-
     public function testValidTaskCreated()
     {
         $task = Task::make($title = 'My title', $priority = 0, $done = false);
@@ -25,5 +23,19 @@ class TaskTest extends \Codeception\Test\Unit
         verify($task->done)->equals($done);
         verify($task->done)->bool();
 
+        verify($task->version)->notNull();
+        verify($task->version)->equals(0);
+        verify($task->version)->int();
+
+    }
+
+    public function testDone()
+    {
+        $task = Task::make('My title', 0, false);
+        $task->done();
+        verify($task->done)->true();
+
+        $task->unDone();
+        verify($task->done)->false();
     }
 }

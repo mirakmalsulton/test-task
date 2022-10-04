@@ -39,6 +39,10 @@ return [
                 'domain' => 'localhost',
             ],
             */
+
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
 
         'urlManager' => [

@@ -18,13 +18,13 @@ class MainController extends Controller
 
     public function __construct($id, $module, TaskAddService $taskAddService, TaskRepository $taskRepository)
     {
-        parent::__construct($id, $module, []);
+        parent::__construct($id, $module);
 
         $this->taskAddService = $taskAddService;
         $this->taskRepository = $taskRepository;
     }
 
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'verbs' => [
@@ -80,7 +80,7 @@ class MainController extends Controller
         return $this->redirect('/main/index');
     }
 
-    public function actions()
+    public function actions(): array
     {
         return [
             'error' => [

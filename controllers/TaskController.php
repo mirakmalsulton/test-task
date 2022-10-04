@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\src\repositories\TaskRepository;
 use DomainException;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\rest\Controller;
 
 class TaskController extends Controller
@@ -17,6 +18,11 @@ class TaskController extends Controller
         $this->taskRepository = $taskRepository;
     }
 
+    public function actionView($id)
+    {
+        return ArrayHelper::toArray($this->taskRepository->getOneById($id));
+    }
+
     public function actionDone(): array
     {
         try {
@@ -25,7 +31,7 @@ class TaskController extends Controller
             return ['success' => false, 'message' => Yii::t('app', 'Task not found')];
         }
 
-        if(Yii::$app->request->getBodyParam('done')) {
+        if (Yii::$app->request->getBodyParam('done')) {
             $task->done();
         } else {
             $task->unDone();

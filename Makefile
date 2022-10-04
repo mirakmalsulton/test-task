@@ -1,22 +1,18 @@
-up:
+docker-up:
 	docker-compose up -d
 
-build:
+docker-build:
 	docker-compose build
 
-up_prod:
-	docker-compose -f docker-compose-prod.yml up -d
-
-build_prod:
-	docker-compose -f docker-compose-prod.yml build
-
-ps:
+docker-ps:
 	docker ps -a
 
-down:
+docker-down:
 	docker stop $$(docker ps -aq)
 	docker rm $$(docker ps -aq)
 
-perm:
-	sudo chown -R $$USER:2000 ./
-	sudo chmod -R ug+rwx ./
+docker-migrate:
+	docker-compose exec cli php yii migrate
+
+docker-test:
+	docker-compose exec cli ./vendor/bin/codecept run

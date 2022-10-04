@@ -2,6 +2,8 @@
 
 namespace app\src\entities;
 
+use InvalidArgumentException;
+use yii\behaviors\AttributeTypecastBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -23,6 +25,12 @@ class Task extends ActiveRecord
         return $task;
     }
 
+    public function changeTitle(string $title)
+    {
+        if (empty($title)) throw new InvalidArgumentException('Title cannot be empty');
+        $this->title = $title;
+    }
+
     public function done()
     {
         $this->done = true;
@@ -36,5 +44,18 @@ class Task extends ActiveRecord
     public static function tableName(): string
     {
         return 'tasks';
+    }
+
+    public function behaviors(): array
+    {
+        return [
+            'typecast' => [
+                'class' => AttributeTypecastBehavior::class,
+                'attributeTypes' => [
+                    'done' => AttributeTypecastBehavior::TYPE_BOOLEAN,
+                ],
+                'typecastAfterFind' => true,
+            ],
+        ];
     }
 }
