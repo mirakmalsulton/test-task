@@ -11,14 +11,11 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
-
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '489ehb8ehb89eh48b89e4hb89e489',
-
+            'cookieValidationKey' => 'HG&$Y&GY$(*YG#*HGI',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
@@ -48,7 +45,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
+        //'db' => $db,
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -66,7 +63,7 @@ $config = [
         ],
 
     ],
-    'params' => $params,
+    //'params' => $params,
 ];
 
 if (YII_ENV_DEV) {
@@ -74,13 +71,6 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
