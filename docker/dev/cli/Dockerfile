@@ -2,11 +2,10 @@ FROM php:7.4-cli-alpine3.15
 
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
-RUN install-php-extensions pdo_mysql mcrypt xdebug
+RUN install-php-extensions pdo_mysql mcrypt
 COPY ./docker/dev/cli/conf.d /usr/local/etc/php/conf.d
 
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
-RUN apk add nodejs npm && npm install -g yarn
 
 RUN apk add mysql mysql-client
 

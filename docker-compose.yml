@@ -13,7 +13,7 @@ services:
         restart: always
 
     mysql:
-        image: mariadb
+        image: mysql:8.0.30
         volumes:
             - ./storage/docker/mysql:/var/lib/mysql
         environment:

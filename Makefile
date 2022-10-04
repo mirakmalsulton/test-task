@@ -1,18 +1,18 @@
-docker-up:
+up:
 	docker-compose up -d
 
-docker-build:
+build:
 	docker-compose build
 
-docker-ps:
+ps:
 	docker ps -a
 
-docker-down:
+down:
 	docker stop $$(docker ps -aq)
 	docker rm $$(docker ps -aq)
 
-docker-migrate:
+migrate:
 	docker-compose exec cli php yii migrate
 
-docker-test:
+test:
 	docker-compose exec cli ./vendor/bin/codecept run
