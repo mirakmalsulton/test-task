@@ -1,4 +1,3 @@
-
 build:
 	docker-compose build
 
@@ -15,9 +14,12 @@ prepare:
 migrate:
 	docker-compose exec cli php yii migrate
 
-
 test:
 	docker-compose exec cli ./vendor/bin/codecept run
 
 ps:
 	docker ps -a
+
+perm:
+	sudo chown -R $$USER:2000 ./
+	sudo chmod -R ug+rwx ./

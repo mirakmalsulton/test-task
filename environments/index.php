@@ -2,13 +2,13 @@
 return [
     'Development' => [
         'path' => 'dev',
-        'setWritable' => [],
+        'setWritable' => ['web', 'runtime', 'storage'],
         'setExecutable' => [],
         'setCookieValidationKey' => []
     ],
     'Production' => [
         'path' => 'prod',
-        'setWritable' => [],
+        'setWritable' => ['web', 'runtime', 'storage'],
         'setExecutable' => [],
         'setCookieValidationKey' => []
     ],
