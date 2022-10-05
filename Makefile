@@ -4,6 +4,9 @@ build:
 up:
 	docker-compose up -d
 
+composer:
+	docker-compose exec cli composer install
+
 down:
 	docker stop $$(docker ps -aq)
 	docker rm $$(docker ps -aq)
