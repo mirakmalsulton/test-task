@@ -27,11 +27,11 @@
     
     make prepare
 
-Прописать имя и пароль базы данных в config/db-local.php.
+Прописать имя и пароль базы данных в /config/db-local.php.
 
     make migrate
 
-Прописать имя и пароль базы данных в config/test_db-local.php. \
+Прописать имя и пароль базы данных в /config/test_db-local.php. \
 Команда для запуска тестов:
 
     make test
